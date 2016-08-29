@@ -218,19 +218,19 @@ will break because jd.record itself is not a number. More on that later.
 # Getting Started
 
 The files are located in [http://WebKitWorks.us/JSONtoDOM/JSONtoDOM.zip](http://WebKitWorks.us/JSONtoDOM/JSONtoDOM.zip).
-Unzip the file, and locate `JSONtoDOMPlus.js`.
-Copy it to whatever directory you wish. The entire library is contained in `JDtoDOMPlus.js`.
-There is also a `JSONtoDOMPlus-min.js` version,
+Unzip the file, and locate `JSONtoDOM.js`.
+Copy it to whatever directory you wish. The entire library is contained in `JDtoDOM.js`.
+There is also a `JSONtoDOM-min.js` version,
 minified using [http://jscompress.com/](http://jscompress.com/).
-The examples in the `examples/` folder expect JSONtoDOMPlus.js to be in their parent directory `../`.
+The examples in the `examples/` folder expect JSONtoDOM.js to be in their parent directory `../`.
 
 
 <a id="index.html"></a>
-## index.html, JSONtoDOMPlus.js
+## index.html, JSONtoDOM.js
 
 To get started, you typically write the following steps in an `index.html` file:
 
-1. Load `JSONtoDOMPlus.js`, which contains both the `JSPlus` and `JSONtoDOM` classes.
+1. Load `JSONtoDOM.js`, which contains both the `JSPlus` and `JSONtoDOM` classes.
 * Load the JavaScript file for your app. Let's call it `TheApp.js`.
 
 		<!DOCTYPE html>
@@ -238,7 +238,7 @@ To get started, you typically write the following steps in an `index.html` file:
 		<head>
 			<title>The App</title>
 			<meta charset = "utf-8">
-			<script src = "JSONtoDOMPlus.js"></script>
+			<script src = "JSONtoDOM.js"></script>
 			<script src = "TheApp.js"></script>
 		</head>
 		</html>
@@ -560,14 +560,14 @@ In the following example, the top `<div>` owns `getNodeName:`, so the method cal
 			{  	nodeName: "ol",
 				childNodes: [
 					{  	nodeName: "li",
-						innerHTML: { jdLookup: "showOwner", jdThis: jd.owner, jdArgs: [ "This is  the owner: " ] }
+						innerHTML: { jdLookup: "showOwner", jdThis: jd.owner, jdArgs: [ "This isÂ  the owner: " ] }
 					}
 				]
 			}
 		]
 	}
 
-What gets called is `<div>.getNodeName( "This is the owner: " )`, which returns `"This is the owner: " + "div"`. `{ jdLookup: "showOwner", jdThis: jd.spec }` becomes a method call to `{li}.showOwner( "This is the owner: " )`, which returns `"This is  the owner: " + "li"`.
+What gets called is `<div>.getNodeName( "This is the owner: " )`, which returns `"This is the owner: " + "div"`. `{ jdLookup: "showOwner", jdThis: jd.spec }` becomes a method call to `{li}.showOwner( "This is the owner: " )`, which returns `"This isÂ  the owner: " + "li"`.
 
 <a id="jdPlus"></a>
 ## { jdPlus: [...] }
