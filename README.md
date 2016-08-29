@@ -217,11 +217,10 @@ will break because jd.record itself is not a number. More on that later.
 <hr id="GettingStarted">
 # Getting Started
 
-The files are located in [http://WebKitWorks.us/JSONtoDOM/JSONtoDOM.zip](http://WebKitWorks.us/JSONtoDOM/JSONtoDOM.zip).
-Unzip the file, and locate `JSONtoDOM.js`.
+The files are on GitHub: [https://github.com/JimSoper/JSONtoDOM](https://github.com/JimSoper/JSONtoDOM).
+Download `JSONtoDOM.js`.
 Copy it to whatever directory you wish. The entire library is contained in `JDtoDOM.js`.
-There is also a `JSONtoDOM-min.js` version,
-minified using [http://jscompress.com/](http://jscompress.com/).
+There may also a `JSONtoDOM-min.js` version, minified using [http://jscompress.com/](http://jscompress.com/).
 The examples in the `examples/` folder expect JSONtoDOM.js to be in their parent directory `../`.
 
 
