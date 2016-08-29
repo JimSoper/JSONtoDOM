@@ -1,7 +1,7 @@
 
-<code><font size=6><b>{<font color=dodgerblue>JSON</font>}<font color=SeaGreen>to</font><<font color=red>DOM</font>></b></font></code><br/>
+<font size=8><b>{<font color=dodgerblue>JSON</font>}<font color=SeaGreen>to</font><<font color=red>DOM</font>></b></font><br/>
 
-<font size=4>`{JavaScript Object} => <DOM Node>`</font>
+<font size=7>`{JavaScript Object} => <DOM Node>`</font>
 
 ----------
 
