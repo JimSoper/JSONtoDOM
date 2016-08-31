@@ -1,12 +1,12 @@
 
-<font size=8><b>{<font color=dodgerblue>JSON</font>}<font color=SeaGreen>to</font><<font color=red>DOM</font>></b></font><br/>
+<font size=8><b>{<font color=dodgerblue>JSON</font>} <font color=SeaGreen>=></font> <<font color=red>DOM</font>></b></font><br/>
 
-<font size=7>`{JavaScript Object} => <DOM Node>`</font>
+<font size=5>JavaScript Objects to DOM Nodes</font>
 
 ----------
 
 By Jim Soper (JimSoper@gmail.com)<br/>
-August 29, 2016
+August 30, 2016
 
 # Table of Contents
 
@@ -83,7 +83,7 @@ Here is an example. In JSONtoDOM, this JavaScript object
 
 in the browser becomes the DOM/HTML equivalent of
 
-	`<div id = "myID" name = "myName">Welcome to JSONtoDOM!</div>`
+	<div id = "myID" name = "myName">Welcome to JSONtoDOM!</div>
 
 
 <a id="Purpose"></a>
@@ -108,13 +108,13 @@ What JSONtoDOM is not, is an extensive library of components, models, data bindi
 <hr id="Basics">
 #The Basics
 
-You build most of your specs using JavaScript objects and a 3 key DOM properties: `nodeName:, innerHTML: and childNodes:`
+You build most of your specs using JavaScript objects and a three key DOM properties: `nodeName:, innerHTML: and childNodes:`
 
 
 <a id="nodeName"></a>
 ## nodeName: & tagName:
 
-The `nodeName:` property designates the class of the DOM element you want. This can be a "div", "tbody". or any other DOM element class. Note that you may use `{ tagName: "div" }` almost as readily as `{ nodeName: "div" }`. They both work. I prefer the property `nodeName:`
+The `nodeName:` property designates the class of the DOM element you want. This can be a "div", "tbody". or any other DOM element class. Note that you may use `{ tagName: "div" }` almost as readily as `{ nodeName: "div" }`.
 
 
 <a id="childNodes"></a>
@@ -791,18 +791,18 @@ There are 2 ways to set up event handlers in JSONtoDOM.
 <a id="onFunction"></a>
 ## on*event*: `<fn>`
 
-The direct way is to simply assign a function to an on*event* property, such as `onclick:` or `onfocus:`.
+The direct, object-oriented way is to simply assign a function to an element's on*event* property, such as `onclick:` or `onfocus:`.
 
 	{	nodeName: "div",
 		onclick: function ( event ) { alert( "clicked" ) }
 	}
 
-If you mistype the event name `onclick` as `onClick`, it names a non-existing property in the node, which triggers an error when `jsp.setValue()` tries to copy the function to the node. It also ensures that the intended node gets the intended handler for the intended event.  :)
+If you mistype the event name `onclick` as `onClick`, it names a non-existing property in the node, which triggers an error when `jsp.set_vlu()` tries to copy the function to the node. It also ensures that the intended node gets the intended handler for the intended event.  :)
 
 <a id="jdListeners"></a>
 ## jdListeners: [...]
 
-The more modern way is to add event listeners using `jdListeners:`, which calls `node.addEventListener()`. It looks like this:
+The more "modern" way is to add event listeners using `jdListeners:`, which calls `node.addEventListener()`. It looks like this:
 
 	{	nodeName: "div",
 		jdListeners: [ { type: "click", listener: function ( event ) { alert( "Clicked" ) }, useCapture: false } ]
@@ -829,10 +829,11 @@ You can define your own custom elements as JavaScript objects. The following is 
 			borderWidth: "thin",
 			borderTopLeftRadius: "8px",
 			borderTopRightRadius: "8px",
-			borderColor: dmnn.borderColor
+			borderColor: myborderColor
 		}
 	}
 
+These custom elements can evolve into complex widgets composed of subelements, that can you can plug into your page as needed.
 
 # Obsolete HTML
 
@@ -855,16 +856,15 @@ MSIE 8 is dysfunctional. `Object.defineProperty()` only works on nodes in MSIE 8
 
 Of course the specs that *you* write need to be compatible with your target browsers.
 
-* JSONtoDOM works with HTML 4.
-* JSONtoDOM works with `"use strict"`.
+JSONtoDOM works with HTML 4. It also works with `"use strict"`.
 
 
 <hr id="Speed"/>
 # Speed
 
-Building a web page by creating DOM nodes has a reputation for being slower than assembling strings of HTML. It doesn't make sense, and it's not true. In 2010, I tested building a 3 column, 400 row table by assembling HTML strings vs. creating DOM nodes. In WebKit-based browsers, building DOM nodes was much faster, at least 10x. Since then, someone knowledgeable about JavaScript, told me that assembling strings in MSIE was faster, but not for other browsers. That was several years ago.
+Building a web page by creating DOM nodes has a reputation for being slower than assembling strings of HTML. It doesn't make sense, and it's not true. In 2010, I tested building a three column, 400 row table by assembling HTML strings vs. creating DOM nodes. In WebKit-based browsers, building DOM nodes was much faster, at least 10 times faster. Since then, someone knowledgeable about JavaScript, told me that assembling strings in MSIE was faster, but not for other browsers. That was several years ago.
 
-As a stress test, JSONtoDOM builds 10 tables with 10 columns and 10 rows each, plus headers, about 1500 elements, in under a second.
+Speed is not the first priority in designing JSONtoDOM. Simplicity and coherence are. But, in a "stress test", JSONtoDOM builds 10 tables with 10 columns and 10 rows each, plus numerous headers, about 1500 elements, in under a second. It's plenty fast.
 
 
 <hr id="Examples"/>
@@ -882,4 +882,4 @@ jdTests
 : is a semi-random series of quick tests to confirm that most of the functionality documented here works.
 
 Dominion
-: This is a DOM browser, to look at DOM objects in the Dominion app itself. Of special interest is that this swaps in a new table every time you click on a row property. See especially `dmnn.tableBody.newRecord()` and which calls ` dmnn.tableBody.nodesFromRecords( rcrd, tbl_node )` to see if there are any new records/rows to show, and `dmnn.tableBody.refresh(), which calls `dmnn.removeDescendantNodes( prnt_node )` and `specsToNodes( [ spc ], prnt_node )`.
+: This is a DOM browser, to look at DOM objects in the Dominion app itself. Of special interest is that this swaps in a new table every time you click on a row. See especially `dmnn.tableBody.newRecord()` and which calls ` dmnn.tableBody.nodesFromRecords( rcrd, tbl_node )` to see if there are any new records/rows to show, and `dmnn.tableBody.refresh(), which calls `dmnn.removeDescendantNodes( prnt_node )` and `specsToNodes( [ spc ], prnt_node )`.

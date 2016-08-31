@@ -1,8 +1,8 @@
-// 28/08/2016 @ 17:42
+// 30/08/2016 @ 21:35
 function JSPlus () { }
 
 var _jspProto =
-	Object.defineProperties( JSPlus.prototype, { _name: { value: '_jspProto' } } )
+	Object.defineProperties( JSPlus.prototype, { _name: { value: "_jspProto" } } )
 
 var jsp = _jspProto
 
@@ -11,7 +11,7 @@ var jsp = _jspProto
 
 _jspProto.isString = function jsp$isString ( any )
 {
-	return ( ( typeof( any ) === 'string' ) || ( any instanceof String ) )
+	return ( ( typeof( any ) === "string" ) || ( any instanceof String ) )
 }
 
 
@@ -19,13 +19,13 @@ _jspProto.isString = function jsp$isString ( any )
 
 _jspProto.isNumber = function jsp$isNumber ( any )
 {
-	return ( ( typeof( any ) === 'number' ) || ( any instanceof Number ) )
+	return ( ( typeof( any ) === "number" ) || ( any instanceof Number ) )
 }
 
 
 /* ***** _console ***
 :
-_console allows us to change the 'this' for methods such as 'error' and 'log' between console aind _jdProp.
+_console allows us to change the "this" for methods such as "error" and "log" between console aind _jdProp.
 @return console, but it can be changed to js, to use the jsp error, log, warn, etc methods
 */
 
@@ -35,11 +35,11 @@ _jspProto._console = function jsp$_console () { return console }
 /* ***** _error$ *** */
 
 /*
-_error$ allows us to change the method used in messages from 'error', 'warn', 'info', 'log', etc.
-@return normally returns 'error'
+_error$ allows us to change the method used in messages from "error", "warn", "info", "log", etc.
+@return normally returns "error"
 */
 
-_jspProto._error$ = 'error'
+_jspProto._error$ = "error"
 
 
 /* ***** message *** */
@@ -47,7 +47,7 @@ _jspProto._error$ = 'error'
 _jspProto.error =
 	function jsp$error ( fnName$, err$, objct, prprty )
 	{
-		var msg = fnName$ + ': ' + err$ + '; prprty = ' + prprty + ', objct ='
+		var msg = fnName$ + ": " + err$ + "; prprty = " + prprty + ", objct ="
 		console[ this._error$ ]( msg, objct )
 		this._break( msg, objct )
 	}
@@ -60,7 +60,7 @@ Immediately stops the program. Upon resumption from debugger, unwinds the stack.
 
 _jspProto._break = function jsp$_break ( msg, objct )
 {
-	if ( this._error$ === 'error' )
+	if ( this._error$ === "error" )
 	{
 		debugger
 		throw [ jsp$_break.name, msg, objct ]
@@ -75,28 +75,28 @@ _jspProto._break = function jsp$_break ( msg, objct )
 /*
 Loads the script defined by src_strng, if it has not already been loaded.
 :
-· document.domain must === 'localhost'
+· document.domain must === "localhost"
 · Taken  from the JavaScript Pocket Guide, p110. See also labs.js.com
 repeat_: means write another script tag for the same file
 */
 
 _jspProto._loadScript = function jsp$_loadScript ( src_strng, repeat_ )
 {
-	// if ( document.domain === 'localhost' ) {
-	var scrpts = document.getElementsByTagName( 'script' )
+	// if ( document.domain === "localhost" ) {
+	var scrpts = document.getElementsByTagName( "script" )
 
-	// TODO: add '/' after document.domain only if needed
-	var fullSrc_strng = //'http://' + document.domain +
+	// TODO: add "/" after document.domain only if needed
+	var fullSrc_strng = //"http://" + document.domain +
 		src_strng
 
-	if ( ( ! this._isScriptLoaded( scrpts, [ 'src' ], fullSrc_strng ) ) || repeat_ )
+	if ( ( ! this._isScriptLoaded( scrpts, [ "src" ], fullSrc_strng ) ) || repeat_ )
 	{
-		var elmnt = document.createElement( 'script' )
-		elmnt.type = 'text/javascript'
+		var elmnt = document.createElement( "script" )
+		elmnt.type = "text/javascript"
 		elmnt.src = fullSrc_strng
 		elmnt.onload = this._scriptLoaded
 		var head = document.head ||
-			document.getElementsByTagName( 'head' )[ 0 ] // document.head not in MSIE 8.
+			document.getElementsByTagName( "head" )[ 0 ] // document.head not in MSIE 8.
 		head.appendChild( elmnt )
 	}
 }
@@ -132,7 +132,7 @@ _jspProto._isScriptLoaded = function jsp$_isScriptLoaded ( scrpts, prprtys, src_
 
 /* ***** ensurePackage ***
 :
-Inserts an empty object into supr_pckg.name if therre is not one already there.
+Inserts an empty object into supr_pckg.name if there is not one already there.
 */
 
 _jspProto.ensure_pckg = function jsp$ensure_pckg ( supr_pckg, name )
@@ -141,6 +141,8 @@ _jspProto.ensure_pckg = function jsp$ensure_pckg ( supr_pckg, name )
 	{ supr_pckg[ name ] = {}; }
 	return supr_pckg[ name ]
 }
+
+
 
 
 /* ***** _test_ary ***
@@ -156,175 +158,176 @@ _jspProto._test_ary = function jsp$_test_ary ( first_num, last_num )
 	return ary
 }
 /* ***** isNaN ***
-:
-· Returns true if vlu_ is NaN
-· Note that (NaN === NaN) is false !!!
-· Also note that !NaN is true and NaN is false
-*/
+ :
+ · Returns true if vlu_ is NaN
+ · Note that (NaN === NaN) is false !!!
+ · Also note that !NaN is true and NaN is false
+ */
 
-_jspProto.isNaN = function jsp$isNaN ( vlu_ )
-{
-	if ( Number.isNaN ) // use the builtin function if it exists
-	{ return Number.isNaN( vlu_ ) }
+_jspProto.isNaN =
+	function jsp$isNaN ( vlu_ )
+	{
+		if ( Number.isNaN ) // use the builtin function if it exists
+		{ return Number.isNaN( vlu_ ) }
 
-	// else, if vlu_ is falsey, but it is none of the other falsey values, it must be NaN
-	return ! vlu_ &&
-		vlu_ !== null && vlu_ !== undefined && vlu_ !== false && vlu_ !== '' && vlu_ !== 0
-}
+		// else, if vlu_ is falsey, but it is none of the other falsey values, it must be NaN
+		return ! vlu_ &&
+			vlu_ !== null && vlu_ !== undefined && vlu_ !== false && vlu_ !== "" && vlu_ !== 0
+	}
 
 
 /* ***** _isAValue ***
-:
-· Returns false if vlu_ is undefined, null, or NaN.
-*/
+ :
+ · Returns false if vlu_ is undefined, null, or NaN.
+ */
 
-_jspProto._isAValue = function jsp$_isAValue ( vlu_ )
-{
-	return ! this._isNotAValue( vlu_ )
-}
+_jspProto._isAValue =
+	function jsp$_isAValue ( vlu_ )
+	{ return ! this._isNotAValue( vlu_ ) }
 
 
 /* ***** isAValue ***
-:
-· Returns false if vlu_ is undefined, null, or NaN.
-· Programmers may choose to override this method by subclassing.
-*/
+ :
+ · Returns false if vlu_ is undefined, null, or NaN.
+ · Programmers may choose to override this method by subclassing.
+ */
 
-_jspProto.isAValue = function jsp$isAValue ( vlu_ )
-{
-	return ! this.isNotAValue( vlu_ )
-}
+_jspProto.isAValue =
+	function jsp$isAValue ( vlu_ )
+	{ return ! this.isNotAValue( vlu_ ) }
 
 
 /* ***** _isNotAValue ***
-:
-· Returns true if vlu_ is undefined, null, or NaN.
-*/
+ :
+ · Returns true if vlu_ is undefined, null, or NaN.
+ */
 
-_jspProto._isNotAValue = function jsp$_isNotAValue ( vlu_ )
-{
-	return ( vlu_ === undefined ) || this.isNaN( vlu_ ) || ( vlu_ === null )
-}
+_jspProto._isNotAValue =
+	function jsp$_isNotAValue ( vlu_ )
+	{ return ( vlu_ === undefined ) || this.isNaN( vlu_ ) || ( vlu_ === null ) }
 
 
 /* ***** isNotAValue ***
-:
-· Returns true if vlu_ is undefined, null, or NaN.
-· Programmers may choose to override this method by subclassing.
-*/
+ :
+ · Returns true if vlu_ is undefined, null, or NaN.
+ · Programmers may choose to override this method by subclassing.
+ */
 
-_jspProto.isNotAValue = function jsp$isNotAValue ( vlu_ )
-{
-	return this._isNotAValue( vlu_ )
-}
+_jspProto.isNotAValue =
+	function jsp$isNotAValue ( vlu_ )
+	{ return this._isNotAValue( vlu_ ) }
 
-_jspProto.isNotAValue.testFn = function isNotAValue$testFn ()
-{ // All of these should return true.
-	console.assert( jsp.isNotAValue( undefined ) )
-	console.assert( jsp.isNotAValue( null ) )
-	console.assert( jsp.isNotAValue( NaN ) )
-	console.assert( jsp.isNotAValue( 0 ) === false )
-	console.assert( jsp.isNotAValue( '' ) === false )
-	console.assert( jsp.isNotAValue( [] ) === false )
-}
+_jspProto.isNotAValue.testFn =
+	function isNotAValue$testFn ()
+	{ // All of these should return true.
+		console.assert( jsp.isNotAValue( undefined ) )
+		console.assert( jsp.isNotAValue( null ) )
+		console.assert( jsp.isNotAValue( NaN ) )
+		console.assert( jsp.isNotAValue( 0 ) === false )
+		console.assert( jsp.isNotAValue( "" ) === false )
+		console.assert( jsp.isNotAValue( [] ) === false )
+	}
 
 
 /* ***** get_vlu ***
-:
-· Returns the value found in objct.prprty.
-· Breaks & returns undefined if the property does not exist.
-· Breaks & returns undefined if the returned value isNotAValue.
-*/
+ :
+ · Returns the value found in objct.prprty.
+ · Breaks & returns undefined if the property does not exist.
+ · Breaks & returns undefined if the returned value isNotAValue.
+ */
 
-_jspProto.get_vlu = function jsp$get_vlu ( objct, prprty )
-{
-	if ( this._isProperty_ok( objct, prprty, jsp$get_vlu ) )
+_jspProto.get_vlu =
+	function jsp$get_vlu ( objct, prprty )
 	{
-		var vlu = objct[ prprty ]
-		if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
-		{ return vlu }
-		else // bad value
-		{ return null }
+		if ( this._isProperty_ok( objct, prprty, jsp$get_vlu ) )
+		{
+			var vlu = objct[ prprty ]
+			if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
+			{ return vlu }
+			else // bad value
+			{ return null }
+		}
+		else // no property
+		{ return undefined }
 	}
-	else // no property
-	{ return undefined }
-}
 
 
 /* ***** get_vlu_ ***
-:
-· Returns the value found in objct.prprty.
-· Breaks & returns undefined if the property does not exist.
-· Does not break if vlu_ isNotAValue.
-*/
+ :
+ · Returns the value found in objct.prprty.
+ · Breaks & returns undefined if the property does not exist.
+ · Does not break if vlu_ isNotAValue.
+ */
 
-_jspProto.get_vlu_ = function jsp$get_vlu_ ( objct, prprty )
-{
-	if ( this._isProperty_ok( objct, prprty, jsp$get_vlu_ ) )
-	{ return objct[ prprty ] }
-	else // no property
-	{ return undefined }
-}
+_jspProto.get_vlu_ =
+	function jsp$get_vlu_ ( objct, prprty )
+	{
+		if ( this._isProperty_ok( objct, prprty, jsp$get_vlu_ ) )
+		{ return objct[ prprty ] }
+		else // no property
+		{ return undefined }
+	}
 
 
 /* ***** set_vlu ***
-:
-· Sets objct.prprty = vlu. Normally returns vlu.
-· Breaks if prprty does not exist in objct. Returns undefined.
-· Breaks if vlu isNotAValue. Returns null.
-*/
+ :
+ · Sets objct.prprty = vlu. Normally returns vlu.
+ · Breaks if prprty does not exist in objct. Returns undefined.
+ · Breaks if vlu isNotAValue. Returns null.
+ */
 
-_jspProto.set_vlu = function jsp$set_vlu ( objct, prprty, vlu )
-{
-	if ( this._isProperty_ok( objct, prprty, jsp$set_vlu ) )
+_jspProto.set_vlu =
+	function jsp$set_vlu ( objct, prprty, vlu )
 	{
-		if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
+		if ( this._isProperty_ok( objct, prprty, jsp$set_vlu ) )
 		{
-			objct[ prprty ] = vlu
-			return vlu
+			if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
+			{
+				objct[ prprty ] = vlu
+				return vlu
+			}
+			else // bad value
+			{ return null }
 		}
-		else // bad value
-		{ return null }
+		else // property does not exist
+		{ return undefined }
 	}
-	else // property does not exist
-	{ return undefined }
-}
 
 
 /* ***** push_vlu ***
-:
-· Pushes vlu onto a stack found in objct.prprty
-· Breaks if prprty does not exist in objct.
-· Breaks if vlu is NotAValue.
-*/
+ :
+ · Pushes vlu onto a stack found in objct.prprty
+ · Breaks if prprty does not exist in objct.
+ · Breaks if vlu is NotAValue.
+ */
 
-_jspProto.push_vlu = function jsp$push_vlu ( objct, prprty, vlu )
-{
-	var stck = this.get_vlu( objct, prprty )
-	if ( stck )
+_jspProto.push_vlu =
+	function jsp$push_vlu ( objct, prprty, vlu )
 	{
-		if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
+		var stck = this.get_vlu( objct, prprty )
+		if ( stck )
 		{
-			stck.push( vlu )
-			return vlu
+			if ( this._isValue_ok( vlu, { o: objct, p: prprty } ) )
+			{
+				stck.push( vlu )
+				return vlu
+			}
+			else
+			{ return null }
 		}
 		else
-		{ return null }
+		{ return stck }
 	}
-	else
-	{ return stck }
-}
 
 
 /* ***** pop_vlu_ ***
-:
-· Pops and returns the the most recent item from a stack found in objct.prprty.
-· Does not break if vlu_ isNotAValue.
-:
-· Breaks if prprty does not exist in objct. Returns undefined.
-:
-· break_: if present, breaks if the stack is empty
-*/
+ :
+ · Pops and returns the the most recent item from a stack found in objct.prprty.
+ · Breaks if prprty does not exist in objct. Returns undefined.
+ · Does not break if vlu_ isNotAValue.
+ :
+ · break_: if present, breaks if the stack is empty
+ */
 
 _jspProto.pop_vlu_ =
 	function jsp$pop_vlu_ ( objct, prprty, break_ )
@@ -345,7 +348,7 @@ _jspProto.pop_vlu_ =
 		// stack is too short
 		if ( break_ )
 		{
-			this.error( 'jsp$pop_vlu_', 'Empty stack', objct, prprty )
+			this.error( "jsp$pop_vlu_", "Empty stack", objct, prprty )
 		}
 
 		return undefined
@@ -353,15 +356,15 @@ _jspProto.pop_vlu_ =
 
 
 /* ***** _stackNth_vlu_ ***
-:
-· Returns the nth item on a stack found in objct.prprty;
-· Returns undefined if the stack is too short.
-· Does not break if vlu_ isNotAValue.
-:
-· num_: is the number of the items on the stack, 1-based. Top item is #1. Default for num_ is 1.
-· If the stack is too short, returns undefined.
-· msg_objct_: breaks only if there is a value for msg_objct_.
-*/
+ :
+ · Returns the nth item on a stack found in objct.prprty;
+ · Returns undefined if the stack is too short.
+ · Does not break if vlu_ isNotAValue.
+ :
+ · indx: is the number of the item on the stack, 1-based. Top item is #1. Default for num_ is 1.
+ · If the stack is too short, returns undefined.
+ · msg_objct_: breaks only if there is a value for msg_objct_.
+ */
 
 _jspProto._stackNth_vlu_ =
 	function jsp$_stackNth_vlu_ ( stck, indx, msg_objct_ )
@@ -370,6 +373,7 @@ _jspProto._stackNth_vlu_ =
 		{ // TODO: error message
 			return null
 		}
+
 		var len = stck.length
 		indx = this.isNumber( indx ) ? indx : 1
 
@@ -380,19 +384,17 @@ _jspProto._stackNth_vlu_ =
 
 		// stack is too short
 		if ( msg_objct_ )
-		{
-			this.error( 'jsp$_stackNth_vlu_', 'Short stack; indx = ' + indx, msg_objct_.o, msg_objct_.p )
-		}
+		{ this.error( "jsp$_stackNth_vlu_", "Short stack; indx = " + indx, msg_objct_.o, msg_objct_.p ) }
 
 		return undefined
 	}
 
 
 /* ***** _isValue_ok ***
-:
-· Breaks if vlu_ isNotAValue && there is msg_objct_
-· msg_objct_: used for potential error message.
-*/
+ :
+ · Breaks if vlu_ isNotAValue && there is msg_objct_
+ · msg_objct_: used for potential error message.
+ */
 
 _jspProto._isValue_ok =
 	function jsp$_isValue_ok ( vlu_, msg_objct_ )
@@ -401,7 +403,7 @@ _jspProto._isValue_ok =
 		{
 			if ( msg_objct_ )
 			{
-				this.error( 'jsp$_isValue_ok', 'Not a valid value: ' + vlu_, msg_objct_.o, msg_objct_.p )
+				this.error( "jsp$_isValue_ok", "Not a valid value: " + vlu_, msg_objct_.o, msg_objct_.p )
 			}
 
 			return false
@@ -411,13 +413,15 @@ _jspProto._isValue_ok =
 	}
 
 
+
+
 /* ***** _isProperty_ok ***
-:
-· Checks if a prprty exists in objct.
-:
-· Breaks if objct.prprty does not exist && break_ it truthy
-· jd$_isProperty_ok overrides this method.
-*/
+ :
+ · Checks if a prprty exists in objct.
+ :
+ · Breaks if objct.prprty does not exist && break_ it truthy
+ · jd$_isProperty_ok overrides this method.
+ */
 
 _jspProto._isProperty_ok =
 	function jsp$_isProperty_ok ( objct, prprty, break_ )
@@ -426,7 +430,7 @@ _jspProto._isProperty_ok =
 
 		if ( ! ok && break_ )
 		{
-			this.error( 'jsp$_isProperty_ok', 'Not a property', objct, prprty )
+			this.error( "jsp$_isProperty_ok", "Not a property", objct, prprty )
 		}
 
 		return ok
@@ -446,6 +450,7 @@ _jspProto.includes = function jsp$includes ( ary, itm )
 {
 	return - 1 < ary.indexOf( itm )
 }
+
 
 
 /* ***** loopThru ***
@@ -526,14 +531,15 @@ _jspProto.arraysEqual = function jsp$arraysEqual ( ary1, ary2 )
 
 /* ***** check_ary ***
 :
-Returns ary if it is an OK array, or an object with a 'data' property.  Otherwise returns undefined.
+Returns ary if it is an OK array, or an object with a "data" property.  Otherwise returns undefined.
 :
-· Breaks if ary is not an array, and it does not have a .data property, in which case it returns the .data.
+· Breaks if ary is not an array, and it does not have a .data property.
+· If  ary is an object with a .data property, data.
 · Breaks if ary.length is not at least min_len_.
 ary: the array to check.
 optns_: contains the following properties
-p: just used in break messages.
-o: just used in break messages.
+	p: just used in break messages.
+	o: just used in break messages.
 min_len: default is 1.
 @return the array, or undefined of ary is not valid.
 */
@@ -552,8 +558,8 @@ _jspProto.check_ary =
 				// min_len of 0 is false
 				if ( min_len && ( ary.length < min_len ) )
 				{
-					msg_ = 'There must be at least ' + min_len +
-						' item(s) in the array for ' + prprty
+					msg_ = "There must be at least " + min_len +
+						" item(s) in the array for " + prprty
 					break
 				}
 				else
@@ -562,22 +568,22 @@ _jspProto.check_ary =
 				}
 			}
 			// not an array. Check to see if it has a data property.
-			case ( ( ( typeof ary === 'object' ) || ( ary instanceof Object ) ) && ( ary.data ) ):
+			case ( ( ( typeof ary === "object" ) || ( ary instanceof Object ) ) && ( ary.data ) ):
 			{ return this.check_ary( ary.data, optns_ ) }
 
 			default:
-			{ msg_ = 'The value for "' + prprty + '" is not an array. Value is: ' + ary }
+			{ msg_ = "The value for \"" + prprty + "\" is not an array. Value is: " + ary }
 		}
 
 		if ( msg_ && prprty )
 		{
 
 			var objct_ = optns_.o
-			var fn_name = jsp$check_ary.name || 'jsp$check_ary'
-			msg_ = fn_name + ': ' + msg_
+			var fn_name = jsp$check_ary.name || "jsp$check_ary"
+			msg_ = fn_name + ": " + msg_
 			if ( objct_ )
 			{
-				msg_ += ' in '
+				msg_ += " in "
 				console[ this._error$ ]( msg_, objct_ )
 				this._break( msg_, objct_ )
 			}
@@ -589,17 +595,18 @@ _jspProto.check_ary =
 				}
 			}
 		}
+
 		return ary
 	}
 
 _jspProto.check_ary.testFn = function check_ary$testFn ()
 {
-	console.assert( jsp.check_ary( [], 0, { min_len: 0, p: 'test1' } ) === undefined )
-	console.assert( jsp.check_ary( [ 1 ], { min_len: 0, p: 'test2' } ) )
-	console.assert( jsp.check_ary( 1, { min_len: 0, p: 'test3' } ) === undefined )
-	console.assert( jsp.check_ary( [ 1 ], { min_len: 0, p: 'test4', o: 'test4Obj' } ) )
-	console.assert( jsp.check_ary( [], { min_len: 0, p: 'test5', o: 'test5Obj' } ) )
-	console.assert( jsp.check_ary( 3, { min_len: 0, p: 'test6', o: 'test6Obj' } ) === undefined )
+	console.assert( jsp.check_ary( [], 0, { min_len: 0, p: "test1" } ) === undefined )
+	console.assert( jsp.check_ary( [ 1 ], { min_len: 0, p: "test2" } ) )
+	console.assert( jsp.check_ary( 1, { min_len: 0, p: "test3" } ) === undefined )
+	console.assert( jsp.check_ary( [ 1 ], { min_len: 0, p: "test4", o: "test4Obj" } ) )
+	console.assert( jsp.check_ary( [], { min_len: 0, p: "test5", o: "test5Obj" } ) )
+	console.assert( jsp.check_ary( 3, { min_len: 0, p: "test6", o: "test6Obj" } ) === undefined )
 }
 
 
@@ -609,20 +616,20 @@ A backup function in case the Array class does not have a reduce method.
 @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 */
 
-if ( 'function' !== typeof Array.prototype.reduce )
+if ( "function" !== typeof Array.prototype.reduce )
 {
 	Array.prototype.reduce =
 		function Array$reduce ( callback /*, initialValue*/ )
 		{
-			// 'use strict';
-			if ( null === this || 'undefined' === typeof this )
+			// "use strict";
+			if ( null === this || "undefined" === typeof this )
 			{
 				throw new TypeError(
-					'Array.prototype.reduce called on null or undefined' );
+					"Array.prototype.reduce called on null or undefined" );
 			}
-			if ( 'function' !== typeof callback )
+			if ( "function" !== typeof callback )
 			{
-				throw new TypeError( callback + ' is not a function' );
+				throw new TypeError( callback + " is not a function" );
 			}
 			var t = Object( this ), len = t.length >>> 0, k = 0, value;
 			if ( arguments.length >= 2 )
@@ -637,7 +644,7 @@ if ( 'function' !== typeof Array.prototype.reduce )
 				}
 				if ( k >= len )
 				{
-					throw new TypeError( 'Reduce of empty array with no initial value' );
+					throw new TypeError( "Reduce of empty array with no initial value" );
 				}
 				value = t[ k ++ ];
 			}
@@ -733,7 +740,7 @@ _jspProto.define_cls =
 	function ta$define_cls ( cls, superClassFn, dfltValus_objct_ )
 	{
 		var classFn
-		if ( typeof( cls ) === 'string' )
+		if ( typeof( cls ) === "string" )
 		{
 			classFn = new Function()
 			classFn.name = cls
@@ -748,13 +755,14 @@ _jspProto.define_cls =
 	}
 
 
+
 /* ***** JSONtoDOM *** */
 
 function JSONtoDOM () { }
 
 /*
- Here we are making JSONtoDOM a subclass of JSPlus so that JSONtoDOM
-i nherits all of JSPlus's methods
+Here we are making JSONtoDOM a subclass of JSPlus so that JSONtoDOM
+inherits all of JSPlus"s methods
 */
 
 JSONtoDOM.prototype = new JSPlus()
@@ -764,11 +772,11 @@ JSONtoDOM.prototype.constructor = JSONtoDOM
 /* ***** _jdProto ***
 :
 We will assign the methods to the JSONtoDOM prototype,
-for which we add a variable, _jdProto.
+which is assigned to variable: _jdProto.
 */
 
-var _jdProto = // JSONtoDOM.prototype
-	Object.defineProperties( JSONtoDOM.prototype, { _name: { value: '_jdProto' } } )
+var _jdProto =
+	Object.defineProperties( JSONtoDOM.prototype, { _name: { value: "_jdProto" } } )
 
 
 /* ***** jd ***
@@ -785,15 +793,15 @@ An array of declared properties used in JSONtoDOM
 */
 
 _jdProto._declared_prprtys = [
-	'jdDefault',
-	'jdRecords',
-	'jdListeners',
+	"jdDefault",
+	"jdRecords",
+	"jdListeners",
 
 	// The next few are set by JSONtoDOM
-	'jdRecord',
-	'jdRecordIndex',
-	'jdNode',
-	'jdSpec'
+	"jdRecord",
+	"jdRecordIndex",
+	"jdNode",
+	"jdSpec"
 ]
 
 
@@ -803,7 +811,7 @@ An array of properties used in Object.defineProperty
 */
 
 _jdProto.defineProperty_prprtys =
-	[ 'configurable', 'enumerable', 'value', 'writable', 'get', 'set' ]
+	[ "configurable", "enumerable", "value", "writable", "get", "set" ]
 
 
 /* ***** _isProperty_ok ***
@@ -822,8 +830,8 @@ _jdProto._isProperty_ok =
 		{
 			if ( break_ )
 			{
-				var fn_name = jd$_isProperty_ok.name || 'jd$_isProperty_ok'
-				var msg = fn_name + ': No property [' + prprty + '] in '
+				var fn_name = jd$_isProperty_ok.name || "jd$_isProperty_ok"
+				var msg = fn_name + ": No property [" + prprty + "] in "
 				console[ this._error$ ]( msg, objct )
 				this._break( msg, objct )
 			}
@@ -837,24 +845,34 @@ _jdProto._isProperty_ok =
 Declare custom properties.
 */
 
-_jdProto.addDeclaredProperties = function jd$addDeclaredProperties ( prprtys )
-{
-	if ( this.check_ary )
+_jdProto.addDeclaredProperties =
+	function jd$addDeclaredProperties ( prprtys )
 	{
-		prprtys =
-			this.check_ary( prprtys, { p: 'the argument for jd$addDeclaredProperties()', o: null } )
+		if ( this.check_ary )
+		{
+			prprtys =
+				this.check_ary( prprtys, { p: "the argument for jd$addDeclaredProperties()", o: null } )
+		}
+		if ( prprtys )
+		{
+			Array.prototype.push.apply( this._declared_prprtys, prprtys )
+		}
 	}
-	if ( prprtys )
-	{
-		Array.prototype.push.apply( this._declared_prprtys, prprtys )
-	}
-}
+
 
 /* ***** _latest *** */
 
-_jdProto.ensure_pckg( _jdProto, '_latest' )
+_jdProto.ensure_pckg( _jdProto, "_latest" )
 
 
+/* ***** jd$records, jd$recordIndexes *** */
+
+_jdProto.records =
+	function jd$records () { return this.recordStack().slice().reverse() }
+
+_jdProto.recordIndexes =
+	function jd$recordIndexes ()
+	{ return this.recordIndexStack().slice().reverse() }
 /* ***** Placeholders ***
 :
 _stackFns is an array of the function objects that serve as stacks for the placeholders in the JDOL.
@@ -865,7 +883,7 @@ _jdProto._stackFns = []
 
 /* ***** _placeholderFns ***
 :
-_placeholderFns is an array of the function objects that serve as placeholder in the JDOL.
+_placeholderFns is an array of the function objects that serve as placeholders in the JDOL.
 */
 
 _jdProto._placeholderFns = []
@@ -873,112 +891,107 @@ _jdProto._placeholderFns = []
 /* ***** _stackMethod_name *** */
 
 _jdProto._stackMethod_name =
-	function jd$_stackMethod_name ( name ) { return name + 'Stack' }
+	function jd$_stackMethod_name ( name ) { return name + "Stack" }
 
 
 /* ***** definePlaceholder ***
 :
 Create the placeholders such as jd.record.
 :
-· "In Internet Explorer 8 Object.defineProperty only accepts DOM objects" but Object.defineProperty is present.
+� "In Internet Explorer 8 Object.defineProperty only accepts DOM objects" but Object.defineProperty is present.
 	Need to find an MSIE 8 test such as navigator.userAgent.
 	In MSIE 8 this is "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/7.0;)"
 */
 
-_jdProto.definePlaceholder = function jd$definePlaceholder ( name )
-{
-	var stckMthd_name = this._stackMethod_name( name )
-	var _stckPrprty_name = '_' + stckMthd_name
-	this._latest[ _stckPrprty_name ] = [] // create the _nameStack property
-	if ( Object.defineProperty )
+_jdProto.definePlaceholder =
+	function jd$definePlaceholder ( name )
 	{
-		Object.defineProperty( this, name, this._placeholderDescriptor( this._itemGetter( name ) ) )
-		Object.defineProperty( this, stckMthd_name, this._placeholderDescriptor( this._stackGetter( stckMthd_name ) ) )
+		var stckMthd_name = this._stackMethod_name( name )
+		var _stckPrprty_name = "_" + stckMthd_name
+		this._latest[ _stckPrprty_name ] = [] // create the _nameStack property
+		if ( Object.defineProperty )
+		{
+			Object.defineProperty( this, name, this._placeholderDescriptor( this._itemGetter( name ) ) )
+			Object.defineProperty( this, stckMthd_name, this._placeholderDescriptor( this._stackGetter( stckMthd_name ) ) )
+		}
+		else
+		{
+			this[ name ] = this._itemGetter( name ) // MSIE 8 version
+			this[ stckMthd_name ] = this._stackGetter( stckMthd_name ) // MSIE 8 version
+		}
 	}
-	else
-	{
-		this[ name ] = this._itemGetter( name ) // MSIE 8 version
-		this[ stckMthd_name ] = this._stackGetter( stckMthd_name ) // MSIE 8 version
-	}
-}
 
 /* ***** _placeholderDescriptor ***
 :
 Returns a default descriptor object containing vlu. _placeholderDescriptor( vlu )
 :
-· In MSIE 8 "Trying to use Object.defineProperty() on native objects throws an error"
-· OK to use it on DOM object tho. MSDN.
+� In MSIE 8 "Trying to use Object.defineProperty() on native objects throws an error"
+� OK to use it on DOM object tho. MSDN.
 */
 
-_jdProto._placeholderDescriptor = function jd$_placeholderDescriptor ( vlu )
-{
-	return {
-		value: vlu,
-		enumerable: true,
-		configurable: false,
-		writable: false
+_jdProto._placeholderDescriptor =
+	function jd$_placeholderDescriptor ( vlu )
+	{
+		return {
+			value: vlu,
+			enumerable: true,
+			configurable: false,
+			writable: false
+		}
 	}
-}
 
 /* ***** _itemGetter ***
 :
-Creates a getter function for a placeholder using 'name'
+Creates a getter function for a placeholder using "name"
 */
 
-_jdProto._itemGetter = function jd$_itemGetter ( name )
-{
-	var stckMthd_name = this._stackMethod_name( name )
-	var _stckPrprty_name = '_' + stckMthd_name
-	var stck_ary = this._latest[ _stckPrprty_name ]
-	var fnctn = function jd$getPlaceholder ()
+_jdProto._itemGetter =
+	function jd$_itemGetter ( name )
 	{
-		return stck_ary[ stck_ary.length - 1 ]
+		var stckMthd_name = this._stackMethod_name( name )
+		var _stckPrprty_name = "_" + stckMthd_name
+		var stck_ary = this._latest[ _stckPrprty_name ]
+		var fnctn = function jd$getPlaceholder ()
+		{
+			return stck_ary[ stck_ary.length - 1 ]
+		}
+		this._placeholderFns.push( fnctn )
+		var fn_name = "jd$" + name
+		fnctn.name = fn_name // doesn't work in Chrome
+		fnctn.displayName = fn_name // works in Chrome
+		return fnctn
 	}
-	this._placeholderFns.push( fnctn )
-	var fn_name = 'jd$' + name
-	fnctn.name = fn_name // doesn't work in Chrome
-	fnctn.displayName = fn_name // works in Chrome
-	return fnctn
-}
 
 
 /* ***** _stackGetter ***
 :
-Creates a getter function for a placeholder stack using 'stckMthd_name'
+Creates a getter function for a placeholder stack using "stckMthd_name"
 */
 
-_jdProto._stackGetter = function jd$_getter ( stckMthd_name )
-{
-	var _stckPrprty_name = '_' + stckMthd_name
-	var stck_ary = this._latest[ _stckPrprty_name ]
-	var fnctn = function jd$getStack () { return stck_ary }
-	this._stackFns.push( fnctn )
-	var fn_name = 'jd$' + stckMthd_name
-	fnctn.name = fn_name // doesn't work in Chrome
-	fnctn.displayName = fn_name // works in Chrome
-	return fnctn
-}
+_jdProto._stackGetter =
+	function jd$_getter ( stckMthd_name )
+	{
+		var _stckPrprty_name = "_" + stckMthd_name
+		var stck_ary = this._latest[ _stckPrprty_name ]
+		var fnctn = function jd$getStack () { return stck_ary }
+		this._stackFns.push( fnctn )
+		var fn_name = "jd$" + stckMthd_name
+		fnctn.name = fn_name // doesn't work in Chrome
+		fnctn.displayName = fn_name // works in Chrome
+		return fnctn
+	}
 
 /* ***** definePlaceholder *** */
 
-if ( ! jd.record )
-{ // need to protect against double-loading
-	_jdProto.definePlaceholder( 'record' )    // _latest._recordStack
-	_jdProto.definePlaceholder( 'recordIndex' )      // _latest._recordIndexStack
-	_jdProto.definePlaceholder( 'spec' )       // _latest._specStack
-	_jdProto.definePlaceholder( 'defaultThis' )     // _latest._defaultThisStack
-	_jdProto.definePlaceholder( 'node' )       // _latest._nodeStack
-	_jdProto.definePlaceholder( 'owner' )       // _latest._ownerStack
-	_jdProto.definePlaceholder( 'jdolObject' )       // _latest._jdolObjectStack // NEW
-}
-
-/* ***** jd$records, jd$recordIndexes *** */
-
-_jdProto.records = function jd$records () { return this.recordStack().slice().reverse() }
-
-_jdProto.recordIndexes = function jd$recordIndexes ()
+if ( ! jd.record ) // protect against double-loading
 {
-	return this.recordIndexStack().slice().reverse()
+	_jdProto.definePlaceholder( "record" )    // _latest._recordStack
+	_jdProto.definePlaceholder( "recordIndex" )      // _latest._recordIndexStack
+	_jdProto.definePlaceholder( "spec" )       // _latest._specStack
+	_jdProto.definePlaceholder( "defaultThis" )     // _latest._defaultThisStack
+	_jdProto.definePlaceholder( "node" )       // _latest._nodeStack
+	_jdProto.definePlaceholder( "owner" )       // _latest._ownerStack
+	_jdProto.definePlaceholder( "jdolObject" )       // _latest._jdolObjectStack // NEW
 }
 
 /* ***** _placeholder_vlu_ ***
@@ -995,11 +1008,9 @@ _jdProto._placeholder_vlu_ =
 		{
 			vlu_ = fnctn.call( this )
 		}
-
 		return vlu_
 	}
-
-/* ***** fetch_vlu ***
+﻿/* ***** fetch_vlu ***
 :
 Gets the value from objct.prprty and then submits it to jdol_vlu before returning the vlu.
 Returns  this.jdol_vlu( this.get_vlu( objct, prprty ) )
@@ -1022,7 +1033,6 @@ _jdProto.fetch_vlu =
 
 		return vlu
 	}
-
 /* ***** jdol_vlu ***
 :
 Returns the value of vlu.
@@ -1080,27 +1090,27 @@ _jdProto._jdObject_vlu_ = function jd$_jdObject_vlu_ ( jd_objct )
 	switch ( true )
 	{
 
-		case ( ( 'jdPath' in jd_objct ) && this._isAValue( this.record() ) ) :
+		case ( ( "jdPath" in jd_objct ) && this._isAValue( this.record() ) ) :
 		{
 			vlu_ = this._jdPathObject_vlu( jd_objct )
 			break
 		}
-		case ( 'jdFn' in jd_objct ) :
+		case ( "jdFn" in jd_objct ) :
 		{
 			vlu_ = this._jdFnObject_vlu( jd_objct )
 			break
 		}
-		case ( 'jdLookup' in jd_objct ) :
+		case ( "jdLookup" in jd_objct ) :
 		{
 			vlu_ = this._jdLookupObject_vlu( jd_objct )
 			break
 		}
-		case ( 'jdPlus' in jd_objct ) :
+		case ( "jdPlus" in jd_objct ) :
 		{
 			vlu_ = this._jdPlusObject_vlu( jd_objct )
 			break
 		}
-		case ( 'jdConcat' in jd_objct ) :
+		case ( "jdConcat" in jd_objct ) :
 		{
 			vlu_ = this.jdConcatObject_vlu( jd_objct )
 			break
@@ -1120,7 +1130,7 @@ prnt_spc_: is optional
 
 _jdProto.specsToNodes = function jd$specsToNodes ( spcs, prnt_node, prnt_spc_ )
 {
-	spcs = this.check_ary( spcs, { p: 'the argument for jd$specsToNodes()', o: null } )
+	spcs = this.check_ary( spcs, { p: "the argument for jd$specsToNodes()", o: null } )
 	if ( spcs )
 	{ this.loopThru( this.specTo_node_, this, spcs, prnt_node, prnt_spc_ ) }
 }
@@ -1134,8 +1144,8 @@ _jdProto.specTo_node_ =
 	{
 		if ( ! ( spc instanceof Object  ) )
 		{
-			var fn_name = jd$specTo_node_.name || 'specTo_node_'
-			var msg = fn_name + ': Spec is not an Object - '
+			var fn_name = jd$specTo_node_.name || "specTo_node_"
+			var msg = fn_name + ": Spec is not an Object - "
 			console[ this._error$ ]( msg, spc )
 			this._break( msg, spc )
 			return null
@@ -1148,7 +1158,7 @@ _jdProto.specTo_node_ =
 		{
 			if ( spc.childNodes )
 			{
-				this.specsToNodes( this.fetch_vlu( spc, 'childNodes' ), new_node, spc )
+				this.specsToNodes( this.fetch_vlu( spc, "childNodes" ), new_node, spc )
 			}
 		}
 		this._popGlobals() // global stacks set in jd$specTo_node
@@ -1160,7 +1170,7 @@ _jdProto.jdRecordsMinLen = 0
 
 /* ***** recordsToNodes ***
 :
-From spc's templates and records, build its childSpecs, and add them as childNodes of node.
+From spc"s templates and records, build its childSpecs, and add them as childNodes of node.
 
 node: the future parent node for spc.childNodes
 */
@@ -1168,13 +1178,13 @@ node: the future parent node for spc.childNodes
 _jdProto.newRecordsToNodes =
 	function jd$newRecordsToNodes ( spc, node )
 	{
-		var rcrds = this.fetch_vlu( spc, 'jdRecords' )
-		rcrds = this.check_ary( rcrds, { p: 'jdRecords', o: spc, min_len: this.jdRecordsMinLen } )
-		var fn_name = jd$newRecordsToNodes.name || 'jd$recordsToNodes'
+		var rcrds = this.fetch_vlu( spc, "jdRecords" )
+		rcrds = this.check_ary( rcrds, { p: "jdRecords", o: spc, min_len: this.jdRecordsMinLen } )
+		var fn_name = jd$newRecordsToNodes.name || "jd$recordsToNodes"
 		var msg
 		if ( rcrds )
 		{
-			if ( 'childNodes' in spc )
+			if ( "childNodes" in spc )
 			{
 				if ( spc.childNodes.length > 0 )
 				{
@@ -1182,14 +1192,14 @@ _jdProto.newRecordsToNodes =
 				}
 				else
 				{
-					msg = fn_name + ': jdRecords with empty childNodes array in '
+					msg = fn_name + ": jdRecords with empty childNodes array in "
 					console[ this._error$ ]( msg, spc )
 					this._break( msg, spc )
 				}
 			}
 			else
 			{
-				msg = fn_name + ': jdRecords with no childNodes property in '
+				msg = fn_name + ": jdRecords with no childNodes property in "
 				console[ this._error$ ]( msg, spc )
 				this._break( msg, spc )
 			}
@@ -1202,7 +1212,7 @@ _jdProto.newRecordsToNodes =
 Expand spcs into nodes for rcrd, according to the specs in the childNodes: property of prnt_spc.
 
 prnt_node: the future parent node for spc.childNodes
-prnt_spc: the spec with the 'jdRecords' property
+prnt_spc: the spec with the "jdRecords" property
 */
 
 _jdProto.newRecordToNodes =
@@ -1216,8 +1226,8 @@ _jdProto.newRecordToNodes =
 		if ( this._latest._recordStack.length === 0 )
 		{
 			// this is an error in JSONtoDOM
-			var fn_name = jd$newRecordToNodes.name || 'jd$recordToNodes'
-			console.warn( fn_name + ': Popping off too many records', this._latest._recordStack )
+			var fn_name = jd$newRecordToNodes.name || "jd$recordToNodes"
+			console.warn( fn_name + ": Popping off too many records", this._latest._recordStack )
 		}
 
 		this._latest._recordIndexStack.pop()
@@ -1230,23 +1240,24 @@ _jdProto.newRecordToNodes =
 Expand spcs into nodes for rcrd, according to the specs in the childNodes of prnt_spc.
 
 prnt_node: the future parent node for spc.childNodes
-prnt_spc: the spec with the 'jdRecords' property
+prnt_spc: the spec with the "jdRecords" property
 */
 
 
 _jdProto.recordToNodes =
 	function jd$recordToNodes ( rcrd, rcrd_indx, prnt_spc, prnt_node )
 	{
-		if ( 'childNodes' in prnt_spc )
+		if ( "childNodes" in prnt_spc )
 		{
-			var chld_spcs = this.fetch_vlu( prnt_spc, 'childNodes' )
-			chld_spcs = this.check_ary( chld_spcs, { p: 'childNodes', o: prnt_spc } )
+			var chld_spcs = this.fetch_vlu( prnt_spc, "childNodes" )
+			chld_spcs = this.check_ary( chld_spcs, { p: "childNodes", o: prnt_spc } )
 			this.loopThru( this.recordTo_node, this, chld_spcs, prnt_node, rcrd, rcrd_indx, prnt_spc )
 		}
 	}
 
 
 /* ***** recordTo_node *** */
+
 
 
 _jdProto.recordTo_node =
@@ -1257,12 +1268,12 @@ _jdProto.recordTo_node =
 		// Best to used jd.record() and jd.recordIndex()
 		// Because a template is shared, spc.jdRecord winds up being the last record set.
 		// But the current record gets copied over to current node, so it is correct.
-		this.set_vlu( spc, 'jdRecord', rcrd )
-		this.set_vlu( spc, 'jdRecordIndex', rcrd_indx )
+		this.set_vlu( spc, "jdRecord", rcrd )
+		this.set_vlu( spc, "jdRecordIndex", rcrd_indx )
 
 		var new_node = this.specTo_node( spc, prnt_node, prnt_spc )
 
-		if ( 'jdRecords' in spc )
+		if ( "jdRecords" in spc )
 		{ this.newRecordsToNodes( spc, new_node ) }
 		else
 		{ this.recordToNodes( rcrd, rcrd_indx, spc, new_node ) }
@@ -1270,6 +1281,8 @@ _jdProto.recordTo_node =
 		this._popGlobals() // global stacks set in jd$specTo_node
 		return new_node
 	}
+
+
 
 
 /* ***** create_node *** */
@@ -1280,57 +1293,57 @@ _jdProto.create_node = function jd$create_node ( spc )
 	var name
 	switch ( true )
 	{
-		case ( 'nodeName' in spc ) :
+		case ( "nodeName" in spc ) :
 		{
-			name = this.fetch_vlu( spc, 'nodeName' )
+			name = this.fetch_vlu( spc, "nodeName" )
 			break
 		}
-		case ( 'tagName' in spc ) :
+		case ( "tagName" in spc ) :
 		{
-			name = this.fetch_vlu( spc, 'tagName' ) // 'tagName' not in #comment, #text
+			name = this.fetch_vlu( spc, "tagName" ) // "tagName" not in #comment, #text
 			break
 		}
 	}
 	if ( ! name )
 	{
-		var fn_name = jd$create_node.name || 'jd$create_node'
-		var msg = fn_name + ': No nodeName for:'
+		var fn_name = jd$create_node.name || "jd$create_node"
+		var msg = fn_name + ": No nodeName for:"
 		console[ this._error$ ]( msg, spc )
 		this._break( msg, spc )
-		name = 'div'
+		name = "div"
 	}
 
-	var data = ''
+	var data = ""
 
 	switch ( name )
 	{
 
 		// https://developer.mozilla.org/en-US/docs/Web/API/document.createTextNode
 		// Text nodes have a textContent property, but not innerHTML
-		case '#text' :
-			if ( 'textContent' in spc )
-			{ data = this.fetch_vlu( spc, 'textContent' ) }
+		case "#text" :
+			if ( "textContent" in spc )
+			{ data = this.fetch_vlu( spc, "textContent" ) }
 			else
 			{
-				if ( 'data' in spc )
-				{ data = this.fetch_vlu( spc, 'data' ) }
+				if ( "data" in spc )
+				{ data = this.fetch_vlu( spc, "data" ) }
 			}
 			return document.createTextNode( data )
 
 		// https://developer.mozilla.org/en-US/docs/Web/API/document.createComment
 		// Comments have a textContent property, but not innerHTML
-		case '#comment' :
-			if ( 'textContent' in spc )
-			{ data = this.fetch_vlu( spc, 'textContent' ) }
-			// else { data = this.fetch_vlu( spc, 'data' ) }
+		case "#comment" :
+			if ( "textContent" in spc )
+			{ data = this.fetch_vlu( spc, "textContent" ) }
+			// else { data = this.fetch_vlu( spc, "data" ) }
 			else
 			{
-				if ( 'data' in spc )
-				{ data = this.fetch_vlu( spc, 'data' ) }
+				if ( "data" in spc )
+				{ data = this.fetch_vlu( spc, "data" ) }
 			}
 			return document.createComment( data )
 
-		case '#document-fragment' :
+		case "#document-fragment" :
 			return document.createDocumentFragment()
 
 		default :
@@ -1344,7 +1357,7 @@ Creates and initializes (populates) a new node according to spc.
 :
 · spc.parentNode = prnt_spc_
 · create a new node for the spec,
-· append to parent node's children
+· append to parent node"s children
 · spc.jdNode = new_node
 · new_node.jdSpec = spc
 · copy the properties
@@ -1370,8 +1383,8 @@ _jdProto.specTo_node =
 		prnt_node.appendChild( new_node )
 		// https://developer.mozilla.org/en-US/docs/Web/API/Node.appendChild
 
-		this.set_vlu( spc, 'jdNode', new_node )
-		this.set_vlu( new_node, 'jdSpec', spc )
+		this.set_vlu( spc, "jdNode", new_node )
+		this.set_vlu( new_node, "jdSpec", spc )
 		this.setNodeProperties( new_node )
 		this.initNode( new_node ) // NEW
 		return new_node
@@ -1386,7 +1399,7 @@ _jdProto._popGlobals = function jd$_popGlobals ()
 {
 	if ( this._latest._specStack.length === 0 )
 	{
-		console.warn( jd$_popGlobals, 'Popping _specs off too much', this._latest._specStack )
+		console.warn( jd$_popGlobals, "Popping _specs off too much", this._latest._specStack )
 	}
 	this._latest._nodeStack.pop()
 	this._latest._specStack.pop()
@@ -1417,42 +1430,42 @@ _jdProto.setNodeProperty = function jd$setNodeProperty ( spc, prprty, node )
 	switch ( prprty )
 	{
 
-		case 'jdRecords' :
+		case "jdRecords" :
 			break
 
-		case 'jdNode' :
+		case "jdNode" :
 			break
 
-		case 'jdListeners' :
+		case "jdListeners" :
 			this.addListeners( spc, node )
-			// addListeners puts a exact copy of 'jdListeners' in the node
+			// addListeners puts a exact copy of "jdListeners" in the node
 			break
 
-		case 'jdDefault' :
+		case "jdDefault" :
 			this.setDefaults( spc )
 			break
 
-		case 'attributes' :
+		case "attributes" :
 			this.setAttributes( spc, node )
 			break
 
-		case 'style' :
+		case "style" :
 			this.setStyles( spc, node )
 			break
 
-		case 'childNodes' :
+		case "childNodes" :
 			break
 
-		case 'children' :
+		case "children" :
 			break
 
-		case 'constructor' :
+		case "constructor" :
 			break
 
 		default:
 			// TODO: if jd.doNotCopyArray.includes( prperty ) { break } // constructor
 			var vlu = this.fetch_vlu( spc, prprty )
-			if ( ( vlu instanceof Object ) && ( 'enumerable' in vlu ) )
+			if ( ( vlu instanceof Object ) && ( "enumerable" in vlu ) )
 			{ this.setDescriptor( node, prprty, vlu ) }
 			else
 			{ this.set_vlu( node, prprty, vlu ) }
@@ -1477,12 +1490,12 @@ If node has a jdRecord, calls the addAsObservee( node ) method for the record.
 */
 _jdProto.addAsObservee = function jd$addAsObservee ( node )
 {
-	if ( 'jdRecord' in node )
+	if ( "jdRecord" in node )
 	{
 		var rcrd = node.jdRecord
 		if ( this._isAValue( rcrd ) )
 		{
-			if ( ( typeof(rcrd ) === 'object' ) && ( 'jdAddObservee' in rcrd ) )
+			if ( ( typeof(rcrd ) === "object" ) && ( "jdAddObservee" in rcrd ) )
 			{
 				// TODO this should have an error message if jdAddObservee is not a fn
 				rcrd.jdAddObservee( node )
@@ -1497,14 +1510,14 @@ If node has a jdRecord, calls the jdRemoveObservee( node ) method for the record
 */
 _jdProto.removeAsObservee = function jd$removeAsObservee ( node )
 {
-	if ( 'jdRecord' in node )
+	if ( "jdRecord" in node )
 	{
 		var rcrd = node.jdRecord
 		if ( this._isAValue( rcrd ) )
 		{
-			if ( (typeof( rcrd ) === 'object' ) && 'jdRemoveObservee' in rcrd )
+			if ( (typeof( rcrd ) === "object" ) && "jdRemoveObservee" in rcrd )
 			{
-				if ( 'jdRemoveObservee' in rcrd )
+				if ( "jdRemoveObservee" in rcrd )
 				{
 					// TODO this should have an error message if jdRemoveObservee is not a fn
 					rcrd.jdRemoveObservee( node )
@@ -1553,7 +1566,7 @@ Populates the style object of a node
 
 _jdProto.setStyles = function jd$setStyles ( spc, node )
 {
-	var style_spc = this.fetch_vlu( spc, 'style' )
+	var style_spc = this.fetch_vlu( spc, "style" )
 
 	var nodeStyle_objct = node.style // this is the pre-existing style object
 	for ( var prprty in style_spc )
@@ -1581,8 +1594,8 @@ _jdProto.setDescriptor = function jd$setDescriptor ( node, prprty, dscrptr )
 	}
 	else
 	{
-		var fn_name = jd$setDescriptor.name || 'jd$setDescriptor'
-		var msg = fn_name + ': The proprety name ' + prprty + ' is not valid for defineValue in '
+		var fn_name = jd$setDescriptor.name || "jd$setDescriptor"
+		var msg = fn_name + ": The proprety name " + prprty + " is not valid for defineValue in "
 		console[ this._error$ ]( msg, dscrptr )
 		this._break( msg, dscrptr )
 	}
@@ -1600,7 +1613,7 @@ Calls node.setAttribute() for  each of the properties in the attributes: object.
 
 _jdProto.setAttributes = function jd$setAttributes ( spc, node )
 {
-	var atrbts_objct = this.fetch_vlu( spc, 'attributes' )
+	var atrbts_objct = this.fetch_vlu( spc, "attributes" )
 
 	if ( atrbts_objct )
 	{
@@ -1608,7 +1621,7 @@ _jdProto.setAttributes = function jd$setAttributes ( spc, node )
 		{
 			var vlu = this.fetch_vlu( atrbts_objct, atrbt_name )
 			// TODO - check that atrbt_name is preexisting in node.attributes or declared in this.extra_attrs
-			// or node.jd_extra_attrs or preexist in the DOM node (eg 'onclick')
+			// or node.jd_extra_attrs or preexist in the DOM node (eg "onclick")
 			node.setAttribute( atrbt_name, vlu )
 		}
 	}
@@ -1618,11 +1631,11 @@ _jdProto.setAttributes = function jd$setAttributes ( spc, node )
 
 _jdProto.addListeners = function jd$addListeners ( spc, node )
 {
-	var lstnr_objcts = this.fetch_vlu( spc, 'jdListeners' )
-	lstnr_objcts = this.check_ary( lstnr_objcts, { p: 'jdListeners', o: spc } )
+	var lstnr_objcts = this.fetch_vlu( spc, "jdListeners" )
+	lstnr_objcts = this.check_ary( lstnr_objcts, { p: "jdListeners", o: spc } )
 	if ( lstnr_objcts )
 	{
-		this.set_vlu( node, 'jdListeners', [] )
+		this.set_vlu( node, "jdListeners", [] )
 		this.loopThru( this.addListener, this, lstnr_objcts, node )
 	}
 }
@@ -1632,17 +1645,17 @@ _jdProto.addListeners = function jd$addListeners ( spc, node )
 _jdProto.addListener =
 	function jd$addListener ( lstnr_objct, indx, node )
 	{
-		var type = this.fetch_vlu( lstnr_objct, 'type' ) // click, keydown, etc
-		var onType = 'on' + type
-		var fnctn = this.fetch_vlu( lstnr_objct, 'listener' )
+		var type = this.fetch_vlu( lstnr_objct, "type" ) // click, keydown, etc
+		var onType = "on" + type
+		var fnctn = this.fetch_vlu( lstnr_objct, "listener" )
 		var useCptr = false
 		if ( onType in node )
 		{
 			if ( node.addEventListener )
 			{
-				if ( 'useCapture' in lstnr_objct )
+				if ( "useCapture" in lstnr_objct )
 				{
-					useCptr = this.fetch_vlu( lstnr_objct, 'useCapture' )
+					useCptr = this.fetch_vlu( lstnr_objct, "useCapture" )
 				}
 				node.addEventListener( type, fnctn, useCptr )
 			}
@@ -1661,8 +1674,8 @@ _jdProto.addListener =
 		}
 		else
 		{
-			var fn_name = jd$addListener.name || 'jd$addListener'
-			var msg = fn_name + ': No "' + onType + '" method in '
+			var fn_name = jd$addListener.name || "jd$addListener"
+			var msg = fn_name + ": No \"" + onType + "\" method in "
 			console[ this._error$ ]( msg, node )
 			this._break( msg, node )
 		}
@@ -1672,10 +1685,10 @@ _jdProto.addListener =
 
 _jdProto.removeListeners = function jd$removeListeners ( node )
 {
-	if ( node.hasOwnProperty( 'jdListeners' ) )
+	if ( node.hasOwnProperty( "jdListeners" ) )
 	{
-		var lstnr_objcts = this.fetch_vlu( node, 'jdListeners' )
-		lstnr_objcts = this.check_ary( lstnr_objcts, { p: 'jdListeners', o: node } )
+		var lstnr_objcts = this.fetch_vlu( node, "jdListeners" )
+		lstnr_objcts = this.check_ary( lstnr_objcts, { p: "jdListeners", o: node } )
 		if ( lstnr_objcts )
 		{ this.loopThru( this.removeListener, this, lstnr_objcts, node ) }
 	}
@@ -1688,15 +1701,15 @@ _jdProto.removeListener =
 	function jd$removeListener ( lstnr_objct, indx, node )
 	{
 		var ignore = indx
-		var type = this.fetch_vlu( lstnr_objct, 'type' ) // click, keydown, etc
-		var onType = 'on' + type
-		var fnctn = this.fetch_vlu( lstnr_objct, 'listener' )
+		var type = this.fetch_vlu( lstnr_objct, "type" ) // click, keydown, etc
+		var onType = "on" + type
+		var fnctn = this.fetch_vlu( lstnr_objct, "listener" )
 		if ( node.removeEventListener )
 		{
 			var useCptr = false
-			if ( 'useCapture' in lstnr_objct )
+			if ( "useCapture" in lstnr_objct )
 			{
-				useCptr = this.fetch_vlu( lstnr_objct, 'useCapture' )
+				useCptr = this.fetch_vlu( lstnr_objct, "useCapture" )
 			}
 			node.removeEventListener( type, fnctn, useCptr )
 		}
@@ -1713,8 +1726,8 @@ Sets the defaults on the child specs, not the nodes
 
 _jdProto.setDefaults = function jd$setDefaults ( spc )
 {
-	var dflt_objct = this.fetch_vlu( spc, 'jdDefault' )
-	var chld_spcs = this.fetch_vlu( spc, 'childNodes' )
+	var dflt_objct = this.fetch_vlu( spc, "jdDefault" )
+	var chld_spcs = this.fetch_vlu( spc, "childNodes" )
 	if ( chld_spcs )
 	{ this.loopThru( this._setChildSpecDefaults, this, chld_spcs, dflt_objct ) }
 }
@@ -1738,13 +1751,13 @@ _jdProto._setChildSpecDefaults =
 	{
 		for ( var prprty in dflt_objct )
 		{
-			if ( prprty === 'jdGenerations' )
+			if ( prprty === "jdGenerations" )
 			{
-				var dpth = this.fetch_vlu( dflt_objct, 'jdGenerations' )
+				var dpth = this.fetch_vlu( dflt_objct, "jdGenerations" )
 				if ( ! this.isNumber( dpth ) )
 				{
-					var fn_name = jd$_setChildSpecDefaults.name || 'jd$_setChildSpecDefaults'
-					var msg = fn_name + ': not a valid jdGenerations: value for jdDefault:' + dpth + ', objct ='
+					var fn_name = jd$_setChildSpecDefaults.name || "jd$_setChildSpecDefaults"
+					var msg = fn_name + ": not a valid jdGenerations: value for jdDefault:" + dpth + ", objct ="
 					console[ this._error$ ]( msg, chld_spc )
 					this._break( msg + chld_spc )
 					return
@@ -1780,9 +1793,9 @@ Calls the function contained in the jdFn property.
 { jdFn: <fn/string>, jdThis: <value>, jdArgs: <array> }
 :
 · Breaks if there is no jdFn: property.
-· Breaks if jdFn js not a function, or the name of a method in 'this'.
-· jdThis:, if present, becomes the value of 'this' for the function.
-· The default for 'this' is defaultThis() which normally is the current step object in a jdPath, or the current spec.
+· Breaks if jdFn js not a function, or the name of a method in "this".
+· jdThis:, if present, becomes the value of "this" for the function.
+· The default for "this" is defaultThis() which normally is the current step object in a jdPath, or the current spec.
 · jdArgs:, if present, becomes the arguments passed to the function.
 · Breaks if args is not an array. It may be an empty array.
 · The default for args_ is [ jd.record() ], if there is a jd.record().
@@ -1795,19 +1808,19 @@ _jdProto._jdFnObject_vlu =
 	function jd$_jdFnObject_vlu ( jdFn_objct )
 	{
 
-		var fnctn = this.fetch_vlu( jdFn_objct, 'jdFn' ) // function or string
+		var fnctn = this.fetch_vlu( jdFn_objct, "jdFn" ) // function or string
 
 		var ths_
-		if ( 'jdThis' in jdFn_objct )
+		if ( "jdThis" in jdFn_objct )
 		{
-			ths_ = this.fetch_vlu( jdFn_objct, 'jdThis' )
+			ths_ = this.fetch_vlu( jdFn_objct, "jdThis" )
 		}
 
 		var args
-		if ( 'jdArgs' in jdFn_objct )
+		if ( "jdArgs" in jdFn_objct )
 		{
-			args = this.fetch_vlu( jdFn_objct, 'jdArgs' )
-			args = this.check_ary( args, { p: 'jdArgs', o: jdFn_objct } )
+			args = this.fetch_vlu( jdFn_objct, "jdArgs" )
+			args = this.check_ary( args, { p: "jdArgs", o: jdFn_objct } )
 		}
 
 		var vlu = this._jdFnCall_vlu( fnctn, ths_, args )
@@ -1822,12 +1835,12 @@ Calls fnctn using values for ths_ and args_.
 If ( fnctn is a string ) { fnctn = ths_[ fnctn/string ] }
 returns fnctn.apply( [ ths_ || this.defaultThis(), args_ ] )
 :
-· Breaks if fnctn js not a function, or the name of a method in 'this'.
+· Breaks if fnctn js not a function, or the name of a method in "this".
 
 fnctn$: the function called.
 If fnctn is a string, _jdFnObject_vlu retrieves the function in the property ths_[ fnctn/string ]
 
-ths_: if present, is 'this' for the fnctn.
+ths_: if present, is "this" for the fnctn.
 The default ths_ is defaultThis() which normally is the current step object in a jdPath,
 or the current spec.
 
@@ -1857,8 +1870,8 @@ _jdProto._jdFnCall_vlu =
 		}
 		else
 		{
-			var fn_name = jd$_jdFnCall_vlu.name || 'jd$_jdFnCall_vlu'
-			var msg = fn_name + ': Invalid jdFn: ' + fnctn$ + ', ths= '
+			var fn_name = jd$_jdFnCall_vlu.name || "jd$_jdFnCall_vlu"
+			var msg = fn_name + ": Invalid jdFn: " + fnctn$ + ", ths= "
 			console[ this._error$ ]( msg, ths_ )
 			this._break( msg, ths_ )
 		}
@@ -1880,12 +1893,12 @@ Returns the value of a jdPath object
 _jdProto._jdPathObject_vlu = function jd$_jdPathObject_vlu ( jdPth_objct )
 {
 	// TODO: push on a jd.pathObject placeholder
-	var prprtys = this.get_vlu( jdPth_objct, 'jdPath' )
-	prprtys = this.check_ary( prprtys, { p: 'jdPath', o: jdPth_objct } )
+	var prprtys = this.get_vlu( jdPth_objct, "jdPath" )
+	prprtys = this.check_ary( prprtys, { p: "jdPath", o: jdPth_objct } )
 
 	var start_vlu_
-	if ( 'jdStart' in jdPth_objct )
-	{ start_vlu_ = this.fetch_vlu( jdPth_objct, 'jdStart' ) }
+	if ( "jdStart" in jdPth_objct )
+	{ start_vlu_ = this.fetch_vlu( jdPth_objct, "jdStart" ) }
 
 	return this._jdPath_vlu( prprtys, start_vlu_ )
 }
@@ -1926,7 +1939,7 @@ _jdProto._jdPath_vlu = function jd$_jdPath_vlu ( prprtys, start_vlu_ )
 _jdProto._step_vlu = function jd$_step_vlu ( step_vlu, prprty )
 {
 	this._latest._defaultThisStack.push( step_vlu )
-	// step_vlu becomes 'this' for the fnctn call in jd$_jdFnObject_vlu
+	// step_vlu becomes "this" for the fnctn call in jd$_jdFnObject_vlu
 
 	var jdl_vlu = this.jdol_vlu( prprty )
 
@@ -1944,6 +1957,8 @@ _jdProto._step_vlu = function jd$_step_vlu ( step_vlu, prprty )
 }
 
 
+
+
 /* ***** plus_vlu *** */
 
 _jdProto.plus_vlu = function jd$plus_vlu ( vlu1, vlu2 )
@@ -1958,8 +1973,8 @@ _jdProto._jdPlusObject_vlu = function jd$_jdPlusObject_vlu ( jdPlus_objct )
 {
 
 	// Fetch and check the value of jdPlus:, an array
-	var ary = this.fetch_vlu( jdPlus_objct, 'jdPlus' )
-	ary = this.check_ary( ary, { p: 'jdPlus', o: jdPlus_objct } )
+	var ary = this.fetch_vlu( jdPlus_objct, "jdPlus" )
+	ary = this.check_ary( ary, { p: "jdPlus", o: jdPlus_objct } )
 
 	var fnctn_ = this.plus_vlu
 	var vlu = ary.reduce( fnctn_ )
@@ -1970,7 +1985,7 @@ _jdProto._jdPlusObject_vlu = function jd$_jdPlusObject_vlu ( jdPlus_objct )
 _jdProto._jdPlusObject_vlu.testFn = function _jdPlusObject_vlu$testFn ()
 {
 	console.assert( jd._jdPlusObject_vlu( { jdPlus: [ 1, 2, 3 ] } ) === 6 )
-	console.assert( jd._jdPlusObject_vlu( { jdPlus: [ 'A', 'B', 'C' ] } ) === 'ABC' )
+	console.assert( jd._jdPlusObject_vlu( { jdPlus: [ "A", "B", "C" ] } ) === "ABC" )
 }
 
 /* ***** concat_vlu *** */
@@ -1987,8 +2002,8 @@ _jdProto.jdConcatObject_vlu = function jd$jdConcatObject_vlu ( jdObject_objct )
 {
 
 	// Fetch and check the value of jdConcat:, an array
-	var ary = this.fetch_vlu( jdObject_objct, 'jdConcat' )
-	ary = this.check_ary( ary, { p: 'jdConcat', o: jdObject_objct } )
+	var ary = this.fetch_vlu( jdObject_objct, "jdConcat" )
+	ary = this.check_ary( ary, { p: "jdConcat", o: jdObject_objct } )
 	ary = this.collect_ary( this.jdol_vlu, this, ary )
 
 	var fnctn_ = this.concat_vlu
@@ -2002,12 +2017,12 @@ _jdProto.jdConcatObject_vlu.testFn = function jdConcatObject_vlu$testFn ()
 	console.assert( jd.arraysEqual(
 		jd.jdConcatObject_vlu( {
 			jdConcat: [
-				[ 'A' ],
-				[ 'B' ],
-				[ 'C' ]
+				[ "A" ],
+				[ "B" ],
+				[ "C" ]
 			]
 		} ),
-		[ 'A', 'B', 'C' ] ) )
+		[ "A", "B", "C" ] ) )
 	console.assert( jd.arraysEqual(
 		jd.jdConcatObject_vlu( {
 			jdConcat: [
@@ -2017,8 +2032,10 @@ _jdProto.jdConcatObject_vlu.testFn = function jdConcatObject_vlu$testFn ()
 			]
 		} ),
 		[ 1, 2, 3 ] ) )
-	console.assert( jd.jdConcatObject_vlu( { jdConcat: [ 'A', 'B', 'C' ] } ) === 'ABC' )
+	console.assert( jd.jdConcatObject_vlu( { jdConcat: [ "A", "B", "C" ] } ) === "ABC" )
 }
+
+
 
 
 /* ***** lookup_vlus ***
@@ -2026,16 +2043,16 @@ _jdProto.jdConcatObject_vlu.testFn = function jdConcatObject_vlu$testFn ()
 · If prprty is an own property in objct, returns [ vlu, owningObject ]
 · Breaks if vlu isNotAValue
 · If prprty is not an own property in objct, looks for prprty in the prnt_objct = objct.prnt_prprty_
-· Breaks if prnt_prprty_ is not an own property in objct and prnt_prprty_ !== '__proto__'
+· Breaks if prnt_prprty_ is not an own property in objct and prnt_prprty_ !== "__proto__"
 · Breaks if prnt_objct isNotAValue
 
-prnt_prprty_: default is 'parentNode'
+prnt_prprty_: default is "parentNode"
 @return { array } [ vlu, owningObject ] or undefined
 */
 
 _jdProto.lookup_vlus = function jd$lookup_vlus ( objct, prprty, prnt_prprty_ )
 {
-	prnt_prprty_ = prnt_prprty_ || 'parentNode'
+	prnt_prprty_ = prnt_prprty_ || "parentNode"
 	var vlu, ary
 
 	if ( objct.hasOwnProperty( prprty ) )
@@ -2047,7 +2064,7 @@ _jdProto.lookup_vlus = function jd$lookup_vlus ( objct, prprty, prnt_prprty_ )
 	else
 	{ // look in the parent
 		if ( objct.hasOwnProperty( prnt_prprty_ ) ||
-			prnt_prprty_ === '__proto__' )
+			prnt_prprty_ === "__proto__" )
 		{
 			var prnt_objct = this.get_vlu( objct, prnt_prprty_ )
 			if ( this._isAValue( prnt_objct ) )
@@ -2057,8 +2074,8 @@ _jdProto.lookup_vlus = function jd$lookup_vlus ( objct, prprty, prnt_prprty_ )
 		}
 		else
 		{
-			var fn_name = jd$lookup_vlus.name || 'jd$lookup_vlus'
-			var msg = fn_name + ': There is no own property called ' + prnt_prprty_ + ' in '
+			var fn_name = jd$lookup_vlus.name || "jd$lookup_vlus"
+			var msg = fn_name + ": There is no own property called " + prnt_prprty_ + " in "
 			console[ this._error$ ]( msg, objct )
 			this._break( msg, objct )
 		}
@@ -2068,14 +2085,14 @@ _jdProto.lookup_vlus = function jd$lookup_vlus ( objct, prprty, prnt_prprty_ )
 
 _jdProto.lookup_vlus.testFn = function lookup_vlus$testFn ()
 {
-	console.assert( jd.arraysEqual( jd.lookup_vlus( jd, 'ensure_pckg', '__proto__' ), [ jsp.ensure_pckg, jsp ] ) )
+	console.assert( jd.arraysEqual( jd.lookup_vlus( jd, "ensure_pckg", "__proto__" ), [ jsp.ensure_pckg, jsp ] ) )
 	console.assert(
 		jd.arraysEqual(
-			jd.lookup_vlus( jd, 'hasOwnProperty', '__proto__' ),
+			jd.lookup_vlus( jd, "hasOwnProperty", "__proto__" ),
 			[ Object.hasOwnProperty, Object.prototype ] ) )
-	console.assert( jd.lookup_vlus( jd, 'hasOwnProperty', 'badPrntPrprty' ) === undefined ) // breaks
-	console.assert( jd.lookup_vlus( jd, 'notaname' ) === undefined ) // breaks, no own prop called 'parentNode'
-	console.assert( jd.lookup_vlus( jd, 'notaname', '__proto__' ) === null )
+	console.assert( jd.lookup_vlus( jd, "hasOwnProperty", "badPrntPrprty" ) === undefined ) // breaks
+	console.assert( jd.lookup_vlus( jd, "notaname" ) === undefined ) // breaks, no own prop called "parentNode"
+	console.assert( jd.lookup_vlus( jd, "notaname", "__proto__" ) === null )
 	// breaks @ _isValue_ok, Object,__proto__ = null
 }
 
@@ -2084,43 +2101,43 @@ _jdProto.lookup_vlus.testFn = function lookup_vlus$testFn ()
 :
 jdLookup: is the name of the property in which we are looking for a value.
 jdStart: is the start object for looking up the tree. Default is this.spec()
-jdParentProperty: designates the property to use to find the owner object. Default is 'parentNode'.
-jdThis: sets the 'this' for the funcall of a method named or the call of the function.
-jdOwner: jd.owner means call the method/function using the owner spec as 'this'.
+jdParentProperty: designates the property to use to find the owner object. Default is "parentNode".
+jdThis: sets the "this" for the funcall of a method named or the call of the function.
+jdOwner: jd.owner means call the method/function using the owner spec as "this".
 jdArgs: if present, are the arguments for the function/method call.
 */
 
 _jdProto._jdLookupObject_vlu = function jd$_jdLookupObject_vlu ( jdLookup_objct )
 {
 
-	var prprty = this.fetch_vlu( jdLookup_objct, 'jdLookup' )
+	var prprty = this.fetch_vlu( jdLookup_objct, "jdLookup" )
 
 	var prnt_rprty
-	if ( 'jdParentProperty' in jdLookup_objct )
-	{ prnt_rprty = this.fetch_vlu( jdLookup_objct, 'jdParentProperty' ) }
+	if ( "jdParentProperty" in jdLookup_objct )
+	{ prnt_rprty = this.fetch_vlu( jdLookup_objct, "jdParentProperty" ) }
 	if ( this._isNotAValue( prnt_rprty ) )
-	{ prnt_rprty = 'parentNode' }
+	{ prnt_rprty = "parentNode" }
 
 	var strt_objct_ = this.spec()
-	if ( 'jdStart' in jdLookup_objct )
+	if ( "jdStart" in jdLookup_objct )
 	{
-		strt_objct_ = this.fetch_vlu( jdLookup_objct, 'jdStart' )
+		strt_objct_ = this.fetch_vlu( jdLookup_objct, "jdStart" )
 	}
 
 	var vlu
 	var ary = this.lookup_vlus( strt_objct_, prprty, prnt_rprty )
 
 	var ths_
-	if ( 'jdThis' in jdLookup_objct )
+	if ( "jdThis" in jdLookup_objct )
 	{
-		ths_ = this.fetch_vlu( jdLookup_objct, 'jdThis' )
+		ths_ = this.fetch_vlu( jdLookup_objct, "jdThis" )
 	}
 
 	var args_
-	if ( 'jdArgs' in jdLookup_objct )
+	if ( "jdArgs" in jdLookup_objct )
 	{
-		args_ = this.fetch_vlu( jdLookup_objct, 'jdArgs' )
-		args_ = this.check_ary( args_, { p: 'jdArgs', o: jdLookup_objct } )
+		args_ = this.fetch_vlu( jdLookup_objct, "jdArgs" )
+		args_ = this.check_ary( args_, { p: "jdArgs", o: jdLookup_objct } )
 	}
 
 	if ( this._isAValue( ths_ ) )
@@ -2151,13 +2168,13 @@ _jdProto.areEqual = function jd$areEqual ( vlu1, vlu2 )
 :
 Return the first parent object whose prprty value matches trgt_vlu, according to fn_.
 :
-Ex: jd.lookup_objct( spec, 'nodeName', 'TABLE' ) // find the containing table
+Ex: jd.lookup_objct( spec, "nodeName", "TABLE" ) // find the containing table
 :
 · If prprty is not in objct, looks for prprty in the prnt_objct = objct.prnt_prprty_
-· Breaks if prnt_prprty_ is not an own property in objct and prnt_prprty_ !== '__proto__'
+· Breaks if prnt_prprty_ is not an own property in objct and prnt_prprty_ !== "__proto__"
 · Breaks if prnt_objct isNotAValue
 
-prnt_prprty_: default is 'parentNode'
+prnt_prprty_: default is "parentNode"
 fn_: default is js.areEqual, which is ( vlu1 === vlu2 )
 @return { array } ancstr_objct or null
 */
@@ -2178,9 +2195,9 @@ _jdProto.lookup_objct =
 
 		// look in the parent
 		var ancstr_objct
-		prnt_prprty_ = prnt_prprty_ || 'parentNode'
-		// Firefox 31 does not consider 'parentNode' to be an own property in a node
-		if ( ( prnt_prprty_ in objct ) || prnt_prprty_ === '__proto__' )
+		prnt_prprty_ = prnt_prprty_ || "parentNode"
+		// Firefox 31 does not consider "parentNode" to be an own property in a node
+		if ( ( prnt_prprty_ in objct ) || prnt_prprty_ === "__proto__" )
 		{
 			var prnt_objct = this.get_vlu( objct, prnt_prprty_ )
 			if ( this._isAValue( prnt_objct ) )
@@ -2190,8 +2207,8 @@ _jdProto.lookup_objct =
 		}
 		else
 		{
-			var fn_name = _jd$Lookup_objct.name || '_jdLookup_objct'
-			var msg = fn_name + ': There is no property called ' + prnt_prprty_ + ' in '
+			var fn_name = _jd$Lookup_objct.name || "_jdLookup_objct"
+			var msg = fn_name + ": There is no property called " + prnt_prprty_ + " in "
 			console[ this._error$ ]( msg, objct )
 			this._break( msg, objct )
 		}
